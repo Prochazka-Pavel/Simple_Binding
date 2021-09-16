@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Simple_Binding"
         mc:Ignorable="d"
-        Title="MainWindow" Height="2000" Width="300">
+        Title="MainWindow" Height="250" Width="300">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -16,14 +16,32 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBox Grid.Column="1" x:Name="ValueTextBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Initial value</TextBox>
-        <Label Grid.Column="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding Text, ElementName=ValueTextBox}"></Label>
+        <TextBox Grid.Column="1" x:Name="ValueTextBox">Initial value</TextBox>
+        <Label Grid.Column="2" Content="{Binding Text, ElementName=ValueTextBox}"></Label>
 
         <Slider IsSnapToTickEnabled="True" x:Name="ValueSlider" Grid.Row="1" Grid.Column="1" Minimum="10" Maximum="100" Value="50"></Slider>
-        <Label Grid.Column="2" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding ElementName=ValueSlider, Path=Value}"></Label>
+        <Label Grid.Column="2" Grid.Row="1" Content="{Binding ElementName=ValueSlider, Path=Value}"></Label>
+
+        <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label>First name:</Label>
+            <Label Grid.Row="1">Last name:</Label>
+            <TextBox Grid.Column="1" x:Name="FirstNameBox" Margin="2"></TextBox>
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="LastNameBox" Margin="2"></TextBox>
+        </Grid>
     </Grid>
 </Window>
